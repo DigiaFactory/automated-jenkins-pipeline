@@ -1,8 +1,9 @@
-# Pre-configured Jenkins Docker image
+# Automated Jenkins CI stack
 
-This repository contains the Dockerfile and any necessary resources
-for running Jenkins in a Docker container with some pre-defined
-plug-ins and settings.
+This repository hosts a pre-configured Jenkins CI stack for easy
+continuous integration and deployment.
+
+*For now* the main components are: Jenkins CI & GitLab
 
 This repository is done as part of the bachelor's thesis work of
 Mikko Piuhola at Metropolia University of Applied Sciences for Digia Plc.

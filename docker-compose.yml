@@ -1,0 +1,18 @@
+jenkins-data:
+    image: busybox
+    volumes:
+        - /var/jenkins_home
+    command: ["chown", "-v", "-R", "1000:1000", "/var/jenkins_home"]
+jenkins:
+    build: ./jenkins
+    ports:
+        - "8080:8080"
+    volumes_from:
+        - jenkins-data
+
+gogs:
+    image: gogs/gogs
+    ports:
+        - "2122:22"
+        - "8082:3000"
+
