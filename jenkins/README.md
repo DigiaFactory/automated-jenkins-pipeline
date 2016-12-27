@@ -1,5 +1,5 @@
-# Pre-configured Jenkins Docker image
+# Pre-configured Jenkins Docker image (WIP)
 
-This repository contains the Dockerfile and any necessary resources
-for running Jenkins in a Docker container with some pre-defined
-plug-ins and settings.
+**NOTE:** This is based on [DigiaCloudServices/digia-factory build-pipeline-in-a-minute/jenkins](https://github.com/DigiaCloudServices/digia-factory)
+and will extend that base image when it is finished.
+
