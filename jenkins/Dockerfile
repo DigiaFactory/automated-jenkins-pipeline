@@ -15,8 +15,8 @@ ENV JENKINS_SLAVE_AGENT_PORT=50000 \
     JENKINS_UC=https://updates.jenkins.io \
     COPY_REFERENCE_FILE_LOG=${JENKINS_HOME}/copy_reference_file.log \
     TINI_VERSION=0.9.0 \
-    TINI_SHA=fa23d1e20732501c3bb8eeeca423c89ac80ed452 \
-    JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    TINI_SHA=fa23d1e20732501c3bb8eeeca423c89ac80ed452
+#    JAVA_OPTS=-Djenkins.install.runSetupWizard=false # TODO: Include when ready
 
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war

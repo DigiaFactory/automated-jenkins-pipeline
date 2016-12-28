@@ -10,6 +10,5 @@ services:
     ports:
       - "8080:8080"
       - "50000:50000"
-# TODO: Enabled when preconfiguration is ready
-#    environment:
-#      - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+    volumes:
+      - ./jenkins-data:/var/jenkins_home

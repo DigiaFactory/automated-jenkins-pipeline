@@ -1,1 +1,3 @@
+# Jenkins temp volumes
 jenkins-volume
+jenkins/jenkins-data
