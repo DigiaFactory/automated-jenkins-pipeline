@@ -43,6 +43,7 @@ jackson2-api:2.7.3
 javadoc:1.4
 jquery-detached:1.2.1
 junit:1.19
+lockable-resources:1.11
 mailer:1.18
 matrix-auth:1.4
 matrix-project:1.7.1
