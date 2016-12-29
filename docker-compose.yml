@@ -1,11 +1,15 @@
-jenkins-data:
+version: '2'
+services:
+  jenkins-data:
     image: busybox
     volumes:
-        - /var/jenkins_home
+      - /var/jenkins_home
     command: ["chown", "-v", "-R", "1000:1000", "/var/jenkins_home"]
-jenkins:
+
+  jenkins:
     build: ./jenkins
+    image: automated-jenkins-pipeline
     ports:
-        - "8080:8080"
+      - "8080:8080"
     volumes_from:
-        - jenkins-data
+      - jenkins-data
