@@ -9,10 +9,3 @@ jenkins:
         - "8080:8080"
     volumes_from:
         - jenkins-data
-
-gogs:
-    image: gogs/gogs
-    ports:
-        - "2122:22"
-        - "8082:3000"
-
