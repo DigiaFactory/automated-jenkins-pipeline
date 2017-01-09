@@ -61,7 +61,26 @@ organization you specified in the configuration
 
 ## Shared pipeline libraries
 
-**TODO**
+See plugin documentation for info: https://github.com/jenkinsci/workflow-cps-global-lib-plugin/blob/master/README.md#pipeline-shared-libraries
+
+Jenkins Pipelines can use common libraries to abstract complex builds/build steps.
+
+### Example
+
+```groovy
+@Library('github.com/someowner/somerepo')
+import org.someowner.somerepo.*
+
+node {
+  stage('VCS') {
+    checkout scm
+  }
+
+  stage('Build') {
+    SomeHelper.doBuild(this)
+  }
+}
+```
 
 ## Future plans
 
