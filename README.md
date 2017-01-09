@@ -27,15 +27,16 @@ referenced in `docker-compose.yml`, like `CONF_GITHUB_TOKEN`.
 
 #### Environment variables for Jenkins configuration
 
-| Name                      | Description                                 |
-|---------------------------|---------------------------------------------|
-| `CONF_GITHUB_ORG`         | GitHub organization for initial seeded job  |
-| `CONF_GITHUB_TOKEN_USER`  | GitHub token's user (e.g. a jenkins user)   |
-| `CONF_GITHUB_TOKEN`       | GitHub token                                |
-| `CONF_SLACK_TEAM_DOMAIN`  | Slack team's domain, leave empty to disable |
-| `CONF_SLACK_TOKEN`        | Slack's Jenkins integration token           |
-| `CONF_SLACK_DEFAULT_ROOM` | Default room to post in Slack               |
-| `CONF_JENKINS_URL`        | URL where Jenkins is reachable              |
+| Name                         | Description                                 |
+|------------------------------|---------------------------------------------|
+| `CONF_GITHUB_ORG`            | GitHub organization for initial seeded job  |
+| `CONF_GITHUB_TOKEN_USER`     | GitHub token's user (e.g. a jenkins user)   |
+| `CONF_GITHUB_TOKEN`          | GitHub token                                |
+| `CONF_SLACK_TEAM_DOMAIN`     | Slack team's domain, leave empty to disable |
+| `CONF_SLACK_TOKEN`           | Slack's Jenkins integration token           |
+| `CONF_SLACK_DEFAULT_ROOM`    | Default room to post in Slack               |
+| `CONF_JENKINS_URL`           | URL where Jenkins is reachable              |
+| `CONF_JENKINS_NUM_EXECUTORS` | Number of executors, default `4`, optional  |
 
 ### Creating an access token
 
