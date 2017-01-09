@@ -40,8 +40,7 @@ organization you specified in the configuration
 
 ## Creating an access token
 
-**OPTIONAL:** Create a separate user in GitHub for Jenkins to use
-
+0. **OPTIONAL:** Create a separate user in GitHub for Jenkins to use
 1. Create a new personal access token in GitHub
   - `https://github.com/settings/tokens/new?scopes=repo,public_repo,admin:repo_hook,admin:org_hook&description=Jenkins+Access`
 2. Provide the GitHub configurations for Docker (see above)
