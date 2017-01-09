@@ -38,7 +38,7 @@ referenced in `docker-compose.yml`, like `CONF_GITHUB_TOKEN`.
 | `CONF_JENKINS_URL`           | URL where Jenkins is reachable              |
 | `CONF_JENKINS_NUM_EXECUTORS` | Number of executors, default `4`, optional  |
 
-### Creating an access token
+### Create an access token
 
 **OPTIONAL:** Create a separate user in GitHub for Jenkins to use
 
@@ -49,43 +49,20 @@ referenced in `docker-compose.yml`, like `CONF_GITHUB_TOKEN`.
 
 ### Steps
 
+0. Create an access token (see above)
 1. Start all services: `docker-compose up -d`
-2. Get the initial admin code for Jenkins from the logs:
+2. Get the initial admin login for Jenkins from the logs:
 `docker-compose logs` (will be there after a minute or two)
 3. Go to `[myaddress]:8080` (e.g. `http://localhost:8080` when running locally)
-and login using the initial admin code
-4. Skip the setup wizard (or select not to install any plugins),
-all required plugins are pre-installed
-5. Create an access token (see below)
-6. Setup GitHub access (see below, with or without webhooks)
+and login using the initial admin login
+4. A folder with jobs should be configured with the GitHub
+organization you specified in the configuration
 
-### GitHub access with webhooks
+## Shared pipeline libraries
 
-Prerequirements:
-- Your Jenkins server is accessible from GitHub
-  - See official GitHub documentation for webhooks
-
-1. In Jenkins dashboard, create `New Item`
-2. Give it the name of your organization (or whatever you like)
-and select "GitHub Organization" as the type
-3. Under `Project Sources > Repository Sources`, add a new `GitHub Organization`
-where the `Owner` is your organization name
-  - Optionally, select a selection pattern for your repositories,
-  to white-/blaclist repositories
-4. Select a valid set of credentials to access your repository
-5. Under `Project Sources > Project Recognizers`, add `Pipeline Jenkinsfile`
-6. Save
-
-**TODO:** Shared Pipeline libraries
-
-### GitHub access without webhooks
-
-When your Jenkins installation is not accessible from GitHub,
-you need to use SCM polling and use a personal access token
-(or similar login method).
+**TODO**
 
 ## Future plans
 
 - Use official `digia-factory` image for Jenkins when released
-- Include Nexus or similar for Docker/npm/other registry (`digia-factory/nexus`)
 
