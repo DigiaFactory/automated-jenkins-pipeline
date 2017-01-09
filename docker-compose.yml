@@ -9,7 +9,20 @@ services:
   jenkins:
     build: ./jenkins
     image: automated-jenkins-pipeline
+    environment:
+      - JAVA_OPTS=-Dhudson.model.DirectoryBrowserSupport.CSP=
+      - JENKINS_OPTS=-Djenkins.install.runSetupWizard=false 
+      - CONF_JENKINS_NUM_EXECUTORS=4
+      - CONF_GITHUB_ORG=$CONF_GITHUB_ORG
+      - CONF_GITHUB_TOKEN_USER=$CONF_GITHUB_TOKEN_USER
+      - CONF_GITHUB_TOKEN=$CONF_GITHUB_TOKEN
+      - CONF_SLACK_TEAM_DOMAIN=$CONF_SLACK_TEAM_DOMAIN
+      - CONF_SLACK_TOKEN=$CONF_SLACK_TOKEN
+      - CONF_SLACK_DEFAULT_ROOM=$CONF_SLACK_DEFAULT_ROOM
+      - CONF_JENKINS_URL=$CONF_JENKINS_URL
     ports:
       - "8080:8080"
     volumes_from:
       - jenkins-data
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

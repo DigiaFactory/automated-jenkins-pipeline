@@ -8,6 +8,14 @@ touch "${COPY_REFERENCE_FILE_LOG}" || { echo "Can not write to ${COPY_REFERENCE_
 echo "--- Copying files at $(date)" >> "$COPY_REFERENCE_FILE_LOG"
 find /usr/share/jenkins/ref/ -type f -exec bash -c '. /usr/local/bin/jenkins-support; for arg; do copy_reference_file "$arg"; done' _ {} +
 
+# Create secrets directory for Master -> Slave Security file
+mkdir -p "${JENKINS_HOME}/secrets"
+
+# Enable Master -> Slave Security, if not already enabled
+if [ ! -f "${JENKINS_HOME}/secrets/slave-to-master-security-kill-switch" ]; then
+  echo -n 'false' > "${JENKINS_HOME}/secrets/slave-to-master-security-kill-switch"
+fi
+
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "--"* ]]; then
 

@@ -1,2 +1,5 @@
 # Jenkins temp volumes
 jenkins-data
+
+# docker-compose private env
+.env
