@@ -20,7 +20,7 @@ blueocean-web:1.0.0-b15
 bouncycastle-api:2.16.0
 branch-api:2.0.0-beta-1
 build-timeout:1.18
-cloudbees-folder:5.15
+cloudbees-folder:5.16
 cobertura:1.9.8
 credentials:2.1.10
 credentials-binding:1.10
@@ -35,7 +35,7 @@ git:3.0.2-beta-1
 git-client:2.2.0
 git-server:1.7
 github:1.25.0
-github-api:1.82
+github-api:1.84
 github-branch-source:2.0.0-beta-1
 github-organization-folder:1.6-beta-1
 handlebars:1.1.1
