@@ -25,8 +25,8 @@ def store = SystemCredentialsProvider.getInstance().getStore()
 
 def slackCred = new StringCredentialsImpl(
   CredentialsScope.GLOBAL,
-  "slack-integration-token",
-  "Slack integration token",
+  'slack-integration-token',
+  'Slack integration token',
   Secret.fromString(env['CONF_SLACK_TOKEN']))
 SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), slackCred)
 
