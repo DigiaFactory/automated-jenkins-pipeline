@@ -8,6 +8,7 @@
 import jenkins.model.*
 import hudson.security.*
 import org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl
+import org.apache.commons.lang.RandomStringUtils
 
 def instance = Jenkins.getInstance()
 
@@ -24,7 +25,7 @@ def currentUsers = instance.getSecurityRealm().getAllUsers().collect { it.getId(
 
 if (!('jenkins-admin' in currentUsers)) {
   println "--> creating local user 'jenkins-admin'"
-  println "\n\n\nWARNING: Remember to reset the admin password!\n\n\n"
+  println "\n\n\nWARNING: Remember to reset the admin password!"
 
   // Generate an initial admin password
   int randomStringLength = 32 // Reasonable length for an initial password
@@ -32,10 +33,10 @@ if (!('jenkins-admin' in currentUsers)) {
   def charset = (('a'..'z') + ('A'..'Z') + ('0'..'9')).join()
   def initialAdminPass = RandomStringUtils.random(randomStringLength, charset.toCharArray())
 
-  instance.getSecurityRealm().createAccount('jenkins-admin', admin)
+  instance.getSecurityRealm().createAccount('jenkins-admin', initialAdminPass)
   instance.getAuthorizationStrategy().add(Jenkins.ADMINISTER, 'jenkins-admin')
 
-  println "\n\nInitial admin password is:\n\t${initialAdminPass}\n\n"
+  println "\nInitial admin password is:\n\n${initialAdminPass}\n\n\n"
 }
 
 instance.save()

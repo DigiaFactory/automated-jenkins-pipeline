@@ -19,21 +19,31 @@ def env = System.getenv()
 def store = SystemCredentialsProvider.getInstance().getStore()
 
 // Token for initial GitHub organization
-def githubOrgCred =  new UsernamePasswordCredentialsImpl(
-  CredentialsScope.GLOBAL,
-  "github-org-token",
-  "GitHub organization token",
-  env['CONF_GITHUB_TOKEN_USER'],
-  env['CONF_GITHUB_TOKEN']
-)
-// Some plugins use the token via secret text, so provide that too
-def githubOrgSecretText = new StringCredentialsImpl(
-  CredentialsScope.GLOBAL,
-  "github-org-token-text",
-  "GitHub organization token as secret text",
-  Secret.fromString(env['CONF_GITHUB_TOKEN']))
+def confGitHubTokenUser = env['CONF_GITHUB_TOKEN_USER']
+def confGitHubToken = env['CONF_GITHUB_TOKEN']
+if (confGitHubTokenUser && confGitHubToken) {
+  println "--> creating username & password credentials for ${confGitHubTokenUser}"
+  def githubOrgCred =  new UsernamePasswordCredentialsImpl(
+    CredentialsScope.GLOBAL,
+    'github-org-token',
+    'GitHub organization token',
+    confGitHubTokenUser,
+    confGitHubToken
+  )
 
-// Add all credentials to Jenkins
-store.addCredentials(Domain.global(), githubOrgCred)
-store.addCredentials(Domain.global(), githubOrgSecretText)
+  // Some plugins use the token via secret text, so provide that too
+  println "--> creating secret text credentials for ${confGitHubTokenUser}"
+  def githubOrgSecretText = new StringCredentialsImpl(
+    CredentialsScope.GLOBAL,
+    'github-org-token-text',
+    'GitHub organization token as secret text',
+    Secret.fromString(confGitHubToken)
+  )
+
+  // Add all credentials to Jenkins
+  store.addCredentials(Domain.global(), githubOrgCred)
+  store.addCredentials(Domain.global(), githubOrgSecretText)
+} else {
+  println 'INFO: No CONF_GITHUB_TOKEN_USER or CONF_GITHUB_TOKEN defined, skipping credentials'
+}
 
