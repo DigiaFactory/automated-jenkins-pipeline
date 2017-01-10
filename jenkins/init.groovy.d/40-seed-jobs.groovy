@@ -7,11 +7,21 @@
 
 import javaposse.jobdsl.dsl.DslScriptLoader
 import javaposse.jobdsl.plugin.JenkinsJobManagement
+import groovy.io.FileType
 
-// TODO: Loop over directory
-def jobDslScript = new File('/usr/share/jenkins/ref/seed-jobs/github-org.groovy')
-def workspace = new File('.')
+def scriptFiles = []
+def seedJobsDir = '/usr/share/jenkins/ref/seed-jobs'
 
-def jobManagement = new JenkinsJobManagement(System.out, [:], workspace)
+def dir = new File(seedJobsDir)
+dir.eachFileRecurse (FileType.FILES) { file ->
+  scriptFiles << file
+}
 
-new DslScriptLoader(jobManagement).runScript(jobDslScript.text)
+println "--> seeding jobs from ${seedJobsDir}"
+scriptFiles.each { script ->
+  def workspace = new File('.')
+  def jobManagement = new JenkinsJobManagement(System.out, [:], workspace)
+
+  new DslScriptLoader(jobManagement).runScript(script.text)
+}
+
