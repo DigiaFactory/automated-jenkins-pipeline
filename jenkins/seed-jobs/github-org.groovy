@@ -1,4 +1,4 @@
-#!groovy
+#!/usr/bin/env groovy
 
 import javaposse.jobdsl.dsl.*
 
