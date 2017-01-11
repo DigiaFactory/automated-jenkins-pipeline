@@ -1,7 +1,6 @@
 #! /bin/bash -e
 
 # From: https://github.com/jenkinsci/docker/blob/79e871d7ea9085cabb287dd53705b4432e36cf6f/jenkins.sh
-# TODO: Always include certain JAVA_OPTS like setupWizard=false
 
 : "${JENKINS_HOME:="/var/jenkins_home"}"
 touch "${COPY_REFERENCE_FILE_LOG}" || { echo "Can not write to ${COPY_REFERENCE_FILE_LOG}. Wrong volume permissions?"; exit 1; }
