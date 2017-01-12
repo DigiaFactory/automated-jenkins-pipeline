@@ -1,4 +1,5 @@
 ace-editor:1.1
+ansicolor:0.4.3
 antisamy-markup-formatter:1.5
 authentication-tokens:1.3
 blueocean:1.0.0-b16
