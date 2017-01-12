@@ -25,7 +25,7 @@ cobertura:1.9.8
 credentials:2.1.10
 credentials-binding:1.10
 display-url-api:1.0-beta-2
-docker-commons:1.5
+docker-commons:1.6
 docker-workflow:1.9.1
 durable-task:1.12
 embeddable-build-status:1.9
