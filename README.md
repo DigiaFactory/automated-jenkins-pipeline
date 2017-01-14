@@ -1,13 +1,14 @@
-# Automated Jenkins CI stack
+# Script-based automation of Jenkins configurations and pipelines
 
 **NOTE: Work in progress!**
 
-A pre-configured Jenkins CI stack for easy
+A pre-configured [Jenkins CI](https://jenkins.io/) setup for easy
 continuous integration and deployment alongside GitHub.
 
-The main components are: Jenkins CI & GitHub. GitHub could later
-be replaced with GitLab or Gogs but currently their Jenkins plugins
-cannot fully replicate all the functionality in
+The main components are: Jenkins CI, GitHub & [Docker](https://www.docker.com/).
+GitHub could later be replaced with GitLab or
+Gogs but currently their Jenkins plugins cannot
+fully replicate all the functionality in
 [github-branch-source-plugin](https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Branch+Source+Plugin).
 
 This repository is a part of the bachelor's thesis work of
