@@ -19,7 +19,7 @@ blueocean-rest:1.0.0-b17
 blueocean-rest-impl:1.0.0-b17
 blueocean-web:1.0.0-b17
 bouncycastle-api:2.16.0
-branch-api:2.0.0-beta-3
+branch-api:2.0.0-beta-4
 build-timeout:1.18
 cloudbees-folder:5.16
 cobertura:1.9.8
@@ -72,7 +72,7 @@ resource-disposer:0.3
 scm-api:2.0.1-beta-3
 script-security:1.25
 slack:2.1
-sse-gateway:1.11
+sse-gateway:1.12
 ssh-agent:1.13
 ssh-credentials:1.12
 structs:1.5
@@ -84,7 +84,7 @@ workflow-api:2.8
 workflow-basic-steps:2.3
 workflow-cps:2.23
 workflow-cps-global-lib:2.5
-workflow-durable-task-step:2.7
+workflow-durable-task-step:2.8
 workflow-job:2.9
 workflow-multibranch:2.10-beta-1
 workflow-scm-step:2.3
