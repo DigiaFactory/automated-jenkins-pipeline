@@ -1,5 +1,10 @@
 #!/usr/bin/env groovy
 
+// Seed a single GitHub organization multibranch folder
+// that auto-scans all repositories and their branches.
+// TODO: Configure multiple organizations similarly to
+// to Shared Pipeline Libraries.
+
 import javaposse.jobdsl.dsl.*
 
 // Include access to Jenkins.instance for inspecting e.g `Jenkins.instance.allItems.each{p-> println "job:" +p.name}` or `Jenkins.instance.getItemByFullName('somejobname')`
@@ -62,5 +67,6 @@ def seedJob = job(jobName) {
     }
 }
 
-// Want to immediately schedule a build of the new job for computing sub-folders so that branches and pull-requests of any origin get included.
+// Want to immediately schedule a build of the new job for computing sub-folders
+// so that branches and pull-requests of any origin get included.
 queue(seedJob) // https://github.com/jenkinsci/job-dsl-plugin/wiki/Job-DSL-Commands
