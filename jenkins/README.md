@@ -1,8 +1,10 @@
 # Pre-configured Jenkins Docker image (WIP)
 
-**NOTE:** The general idea and implementation
-is based on [DigiaCloudServices/digia-factory build-pipeline-in-a-minute/jenkins](https://github.com/DigiaCloudServices/digia-factory)
-and will extend that base image when it is finished.
+Heavily based on the [official Jenkins Docker image](https://github.com/jenkinsci/docker/)
+
+The general changes to the base Docker images are based on
+[DigiaCloudServices/digia-factory build-pipeline-in-a-minute/jenkins](https://github.com/DigiaCloudServices/digia-factory)
+and this image will extend that base image when it is finished.
 
 ## Contents
 
