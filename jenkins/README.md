@@ -4,6 +4,14 @@
 is based on [DigiaCloudServices/digia-factory build-pipeline-in-a-minute/jenkins](https://github.com/DigiaCloudServices/digia-factory)
 and will extend that base image when it is finished.
 
+## Contents
+
+- `Dockerfile`: Docker image
+- `plugins.txt`: Configuration of what plugins to install
+- `init.groovy.d`: Jenkins auto-configuration (see below)
+- `scripts`: Internal start-up and configuration scripts
+- `seed-jobs`: Job DSL configurations for seeded jobs (see below)
+
 ## Usage
 
 See the main README
