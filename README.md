@@ -60,7 +60,7 @@ you specified in the configuration
 | `CONF_SHARED_LIB_NAMES`      | Semicolon-separated list of shared pipeline library names             |
 | `CONF_SHARED_LIB_OWNERS`     | Semicolon-separated list of shared pipeline library repository owners |
 | `CONF_SHARED_LIB_REPOS`      | Semicolon-separated list of shared pipeline library repository names  |
-
+| `EXTRA_HOST_DOCKER_REG`      | Hostname for a private Docker registry that does not have FQDN        |
 
 ## Shared pipeline libraries
 

@@ -30,3 +30,5 @@ services:
       - jenkins-data
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    extra_hosts:
+      - $EXTRA_HOST_DOCKER_REG
