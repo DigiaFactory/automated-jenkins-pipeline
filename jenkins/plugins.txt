@@ -44,7 +44,7 @@ htmlpublisher:1.12
 icon-shim:2.0.3
 jackson2-api:2.7.3
 javadoc:1.4
-job-dsl:1.56
+job-dsl:1.57
 jquery-detached:1.2.1
 junit:1.19
 lockable-resources:1.11
