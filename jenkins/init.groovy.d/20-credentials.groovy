@@ -22,30 +22,49 @@ def store = SystemCredentialsProvider.getInstance().getStore()
 def confGitHubTokenUser = env['CONF_GITHUB_TOKEN_USER']
 def confGitHubToken = env['CONF_GITHUB_TOKEN']
 
-if (!confGitHubTokenUser || !confGitHubToken) {
-  println 'INFO: No CONF_GITHUB_TOKEN_USER or CONF_GITHUB_TOKEN defined, skipping credentials'
-  return
+if (confGitHubTokenUser && confGitHubToken) {
+  println "--> creating username & password credentials for ${confGitHubTokenUser}"
+  def githubOrgCred =  new UsernamePasswordCredentialsImpl(
+    CredentialsScope.GLOBAL,
+    'github-org-token',
+    'GitHub organization token',
+    confGitHubTokenUser,
+    confGitHubToken
+  )
+
+  // Some plugins use the token via secret text, so provide that too
+  println "--> creating secret text credentials for ${confGitHubTokenUser}"
+  def githubOrgSecretText = new StringCredentialsImpl(
+    CredentialsScope.GLOBAL,
+    'github-org-token-text',
+    'GitHub organization token as secret text',
+    Secret.fromString(confGitHubToken)
+  )
+
+  // Add all credentials to Jenkins
+  store.addCredentials(Domain.global(), githubOrgCred)
+  store.addCredentials(Domain.global(), githubOrgSecretText)
+
+} else {
+  println 'INFO: No CONF_GITHUB_TOKEN_USER or CONF_GITHUB_TOKEN defined, skipping GitHub credentials'
 }
 
-println "--> creating username & password credentials for ${confGitHubTokenUser}"
-def githubOrgCred =  new UsernamePasswordCredentialsImpl(
-  CredentialsScope.GLOBAL,
-  'github-org-token',
-  'GitHub organization token',
-  confGitHubTokenUser,
-  confGitHubToken
-)
+// Login for private Docker registry
+def dockerLogin = env['CONF_DOCKER_LOGIN'] // TODO: Allow multiple
+def dockerPass = env['CONF_DOCKER_PASS']
 
-// Some plugins use the token via secret text, so provide that too
-println "--> creating secret text credentials for ${confGitHubTokenUser}"
-def githubOrgSecretText = new StringCredentialsImpl(
-  CredentialsScope.GLOBAL,
-  'github-org-token-text',
-  'GitHub organization token as secret text',
-  Secret.fromString(confGitHubToken)
-)
+if (dockerLogin && dockerPass) {
+  println "--> creating 'docker-login' credentials for ${dockerLogin}"
+  def dockerLoginCred = new UsernamePasswordCredentialsImpl(
+    CredentialsScope.GLOBAL,
+    'docker-login',
+    'Docker registry login',
+    dockerLogin,
+    dockerPass
+  )
 
-// Add all credentials to Jenkins
-store.addCredentials(Domain.global(), githubOrgCred)
-store.addCredentials(Domain.global(), githubOrgSecretText)
+  store.addCredentials(Domain.global(), dockerLoginCred)
+} else {
+  println 'INFO: No CONF_DOCKER_LOGIN or CONF_DOCKER_PASS defined, skipping Docker credentials'
+}
 
