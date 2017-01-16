@@ -36,9 +36,10 @@ def seedJob = job(jobName) {
             daysToKeep 0
             numToKeep 3
         }
+        // Trigger repository scans every 1 hour
         project / 'triggers' / 'com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger' {
-            spec 'H H * * *'
-            interval 86400000
+            spec 'H * * * *'
+            interval 3600000
         }
         project / 'navigators' / 'org.jenkinsci.plugins.github__branch__source.GitHubSCMNavigator' {
             repoOwner "$jobName"
