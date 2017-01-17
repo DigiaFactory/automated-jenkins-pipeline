@@ -46,7 +46,7 @@ if (confGitHubTokenUser && confGitHubToken) {
   store.addCredentials(Domain.global(), githubOrgSecretText)
 
 } else {
-  println 'INFO: No CONF_GITHUB_TOKEN_USER or CONF_GITHUB_TOKEN defined, skipping GitHub credentials'
+  println 'DEBUG: No CONF_GITHUB_TOKEN_USER or CONF_GITHUB_TOKEN defined, skipping GitHub credentials'
 }
 
 // Login for private Docker registry
@@ -65,6 +65,6 @@ if (dockerLogin && dockerPass) {
 
   store.addCredentials(Domain.global(), dockerLoginCred)
 } else {
-  println 'INFO: No CONF_DOCKER_LOGIN or CONF_DOCKER_PASS defined, skipping Docker credentials'
+  println 'DEBUG: No CONF_DOCKER_LOGIN or CONF_DOCKER_PASS defined, skipping Docker credentials'
 }
 

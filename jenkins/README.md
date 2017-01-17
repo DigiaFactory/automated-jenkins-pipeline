@@ -1,4 +1,4 @@
-# Pre-configured Jenkins Docker image (WIP)
+# Pre-configured Jenkins Docker image
 
 Heavily based on the [official Jenkins Docker image](https://github.com/jenkinsci/docker/)
 

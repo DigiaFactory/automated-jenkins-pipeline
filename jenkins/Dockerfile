@@ -18,7 +18,9 @@ ENV JENKINS_SLAVE_AGENT_PORT=50000 \
     TINI_SHA=fa23d1e20732501c3bb8eeeca423c89ac80ed452 \
     DOCKER_VERSION=1.12.5 \
     DOCKER_SHA256=0058867ac46a1eba283e2441b1bb5455df846144f9d9ba079e97655399d4a2c6 \
-    JENKINS_OPTS=-Djenkins.install.runSetupWizard=false
+    JENKINS_OPTS=-Djenkins.install.runSetupWizard=false \
+    SEED_JOBS_DIR=/usr/share/jenkins/ref/seed-jobs \
+    CONF_GITHUB_TOKEN_ID=github-org-token
 
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war

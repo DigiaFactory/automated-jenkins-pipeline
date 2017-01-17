@@ -27,7 +27,8 @@ def slackCred = new StringCredentialsImpl(
   CredentialsScope.GLOBAL,
   'slack-integration-token',
   'Slack integration token',
-  Secret.fromString(env['CONF_SLACK_TOKEN']))
+  Secret.fromString(env['CONF_SLACK_TOKEN'])
+)
 SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), slackCred)
 
 def slack = instance.getDescriptorByType(SlackNotifier.DescriptorImpl)
@@ -35,3 +36,4 @@ slack.teamDomain = slackDomain
 slack.tokenCredentialId = slackCred.id
 slack.room = env['CONF_SLACK_DEFAULT_ROOM']
 slack.save()
+

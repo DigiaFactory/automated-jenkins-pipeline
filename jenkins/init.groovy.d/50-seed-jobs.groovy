@@ -10,11 +10,14 @@ import javaposse.jobdsl.plugin.JenkinsJobManagement
 import groovy.io.FileType
 
 def scriptFiles = []
-def seedJobsDir = '/usr/share/jenkins/ref/seed-jobs'
+def seedJobsDir = System.getenv('SEED_JOBS_DIR')
 
+// Find all Job DSL files in directory
 def dir = new File(seedJobsDir)
 dir.eachFileRecurse (FileType.FILES) { file ->
-  scriptFiles << file
+  if (file.name.endsWith('.groovy')) {
+    scriptFiles << file
+  }
 }
 
 println "--> seeding jobs from ${seedJobsDir}"

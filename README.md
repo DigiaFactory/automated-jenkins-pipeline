@@ -50,6 +50,7 @@ you specified in the configuration
 | `CONF_GITHUB_ORG`            | GitHub organization for initial seeded job                            |
 | `CONF_GITHUB_TOKEN_USER`     | GitHub token's user (e.g. a jenkins user)                             |
 | `CONF_GITHUB_TOKEN`          | GitHub token                                                          |
+| `CONF_GITHUB_TOKEN_ID`       | Jenkins ID for the GitHub organization token                          |
 | `CONF_SLACK_TEAM_DOMAIN`     | Slack team's domain, leave empty to disable                           |
 | `CONF_SLACK_TOKEN`           | Slack's Jenkins integration token                                     |
 | `CONF_SLACK_DEFAULT_ROOM`    | Default room to post in Slack                                         |
@@ -59,7 +60,7 @@ you specified in the configuration
 | `CONF_SHARED_LIB_OWNERS`     | Semicolon-separated list of shared pipeline library repository owners |
 | `CONF_SHARED_LIB_REPOS`      | Semicolon-separated list of shared pipeline library repository names  |
 | `CONF_DOCKER_LOGIN`          | Username for private Docker registry, provided as `docker-login`      |
-| `CONF_DOCKER_PASS`           | Password for private Docker registry
+| `CONF_DOCKER_PASS`           | Password for private Docker registry                                  |
 | `EXTRA_HOST_DOCKER_REG`      | Hostname for a private Docker registry that does not have FQDN        |
 
 ## Shared pipeline libraries
