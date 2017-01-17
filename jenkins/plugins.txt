@@ -19,7 +19,7 @@ blueocean-rest:1.0.0-b17
 blueocean-rest-impl:1.0.0-b17
 blueocean-web:1.0.0-b17
 bouncycastle-api:2.16.0
-branch-api:2.0.0
+branch-api:2.0.1
 build-timeout:1.18
 cloudbees-folder:5.16
 cobertura:1.9.8
@@ -32,7 +32,7 @@ durable-task:1.12
 embeddable-build-status:1.9
 external-monitor-job:1.7
 favorite:2.0.4
-git:3.0.2
+git:3.0.3
 git-client:2.2.1
 git-server:1.7
 github:1.25.1
