@@ -1,7 +1,5 @@
 # Script-based automation of Jenkins configurations and pipelines
 
-**NOTE: Work in progress!**
-
 A pre-configured [Jenkins CI](https://jenkins.io/) setup for easy
 continuous integration and deployment alongside GitHub.
 
@@ -69,7 +67,8 @@ you specified in the configuration
 See plugin documentation for info: https://github.com/jenkinsci/workflow-cps-global-lib-plugin/blob/master/README.md#pipeline-shared-libraries
 
 Jenkins Pipelines can use common libraries to abstract complex builds/build steps.
-**NOTE:** When using the new declarative pipeline syntax ([pipeline-model-definition-plugin](https://github.com/jenkinsci/pipeline-model-definition-plugin),
+**NOTE:** When using the new declarative pipeline syntax
+([pipeline-model-definition-plugin](https://github.com/jenkinsci/pipeline-model-definition-plugin),
 you cannot abstract away the whole pipeline, just steps. With "imperative"/current pipeline
 syntax, you could have a `Jenkinsfile` as simple as this:
 
