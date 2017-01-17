@@ -37,9 +37,6 @@ ARG gid=1000
 # `/usr/share/jenkins/ref/` contains all reference configuration we want
 # to set on a fresh new installation. Use it to bundle additional plugins
 # or config file with your custom jenkins Docker image.
-# Use tini as subreaper in Docker container to adopt zombie processes.
-# Next, install Jenkins itself.
-# Install Docker CLI to enable usage of Docker inside Jenkins jobs.
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -47,8 +44,12 @@ RUN apt-get update && apt-get install -y \
     && groupadd -g ${gid} ${group} \
     && useradd -d "$JENKINS_HOME" -u ${uid} -g ${gid} -m -s /bin/bash ${user} \
     && mkdir -p /usr/share/jenkins/ref/init.groovy.d \
-    && mkdir -p /usr/share/jenkins/ref/seed-jobs \
-    && curl -fsSL https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-static -o /bin/tini && chmod +x /bin/tini \
+    && mkdir -p /usr/share/jenkins/ref/seed-jobs
+
+# Use tini as subreaper in Docker container to adopt zombie processes.
+# Next, install Jenkins itself.
+# Install Docker CLI to enable usage of Docker inside Jenkins jobs.
+RUN curl -fsSL https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-static -o /bin/tini && chmod +x /bin/tini \
     && echo "$TINI_SHA  /bin/tini" | sha1sum -c - \
     && curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
     && echo "${JENKINS_SHA}  /usr/share/jenkins/jenkins.war" | sha1sum -c - \
