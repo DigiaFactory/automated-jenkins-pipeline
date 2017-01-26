@@ -5,9 +5,9 @@ FROM openjdk:8-jdk
 LABEL maintainer="Mikko Piuhola <mikko.piuhola@digia.com>"
 
 # Jenkins version being bundled in this docker image
-ARG JENKINS_VERSION=2.41
+ARG JENKINS_VERSION=2.42
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=ed360bd0d720b5b5b78e0af979944779034065d6
+ARG JENKINS_SHA=9efdbd5f278c9dccdd88d222905eaad98055ceef
 
 # Jenkins settings
 ENV JENKINS_HOME=/var/jenkins_home 
