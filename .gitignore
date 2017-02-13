@@ -3,3 +3,4 @@ jenkins-data
 
 # docker-compose private env
 .env
+certs
