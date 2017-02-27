@@ -26,7 +26,7 @@ if (confGitHubTokenUser && confGitHubToken) {
   println "--> creating username & password credentials for ${confGitHubTokenUser}"
   def githubOrgCred =  new UsernamePasswordCredentialsImpl(
     CredentialsScope.GLOBAL,
-    'github-org-token',
+    env['CONF_GITHUB_TOKEN_ID'],
     'GitHub organization token',
     confGitHubTokenUser,
     confGitHubToken
@@ -36,7 +36,7 @@ if (confGitHubTokenUser && confGitHubToken) {
   println "--> creating secret text credentials for ${confGitHubTokenUser}"
   def githubOrgSecretText = new StringCredentialsImpl(
     CredentialsScope.GLOBAL,
-    'github-org-token-text',
+    env['CONF_GITHUB_TOKEN_ID'] + '-text',
     'GitHub organization token as secret text',
     Secret.fromString(confGitHubToken)
   )
