@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 # Based on, with modifications: https://github.com/jenkinsci/docker/blob/79e871d7ea9085cabb287dd53705b4432e36cf6f/install-plugins.sh
-# License:
+# Original license:
 #################
 # The MIT License
 #
