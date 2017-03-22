@@ -63,6 +63,51 @@ you specified in the configuration
 | `CONF_DOCKER_PASS`           | Password for private Docker registry                                  |
 | `EXTRA_HOST_DOCKER_REG`      | Hostname for a private Docker registry that does not have FQDN        |
 
+## Example Jenkinsfile
+
+Create a repository with a `Jenkinsfile` in the root with these contents:
+
+```groovy
+pipeline {
+    agent any
+    
+    stages {
+        stage('Prepare') {
+            steps {
+                echo 'Preparing' 
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                parallel 'Smoke tests': {
+                    sleep 15
+                    echo 'Smoking'
+                }, 'Unit tests': {
+                    sleep 10
+                    echo 'Uniting'
+                }
+            }
+        }
+
+        stage('Skipped stage') {
+            when { branch 'non-existent' }
+            steps {
+                echo 'We will never come here'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying stuff'
+            }
+        }
+    }
+}
+```
+
+Now you can use that repository for testing your Jenkins installation.
+
 ## Shared pipeline libraries
 
 See plugin documentation for info: https://github.com/jenkinsci/workflow-cps-global-lib-plugin/blob/master/README.md#pipeline-shared-libraries
