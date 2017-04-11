@@ -20,7 +20,7 @@ def sharedLibs = env['CONF_SHARED_LIB_NAMES']?.split(separator) ?: new String[0]
 def sharedLibOwners = env['CONF_SHARED_LIB_OWNERS']?.split(separator) ?: new String[0]
 def sharedLibRepos = env['CONF_SHARED_LIB_REPOS']?.split(separator) ?: new String[0]
 
-if (!env['CONF_SHARED_LIB_NAMES'].size() == 0) {
+if (sharedLibs.size() == 0) {
   println 'DEBUG: no shared pipeline libraries configured in CONF_SHARED_LIB_NAMES, skipping'
   return
 }
