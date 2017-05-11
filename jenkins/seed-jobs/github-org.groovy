@@ -16,7 +16,7 @@ def jobName = env['CONF_GITHUB_ORG'] // Use organization's name as the project n
 
 // Need to use Jenkins Credentials global secret username-password for Github username and Github Personal Access Token as follows:
 // https://github.com/settings/tokens/new?scopes=repo,public_repo,admin:repo_hook,admin:org_hook&description=Jenkins+Access
-def jenkinsGithubuserAccesstokenId = 'github-org-token'
+def jenkinsGitHubUserAccesstokenId = 'github-org-token'
 
 def seedJob = job(jobName) {
     displayName jobName
@@ -43,7 +43,7 @@ def seedJob = job(jobName) {
         }
         project / 'navigators' / 'org.jenkinsci.plugins.github__branch__source.GitHubSCMNavigator' {
             repoOwner "$jobName"
-            scanCredentialsId "$jenkinsGithubuserAccesstokenId"
+            scanCredentialsId "$jenkinsGitHubUserAccesstokenId"
             checkoutCredentialsId 'SAME'
             pattern '.*'
             buildOriginBranch true
