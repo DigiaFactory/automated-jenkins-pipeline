@@ -21,12 +21,17 @@ def store = SystemCredentialsProvider.getInstance().getStore()
 // Token for initial GitHub organization
 def confGitHubTokenUser = env['CONF_GITHUB_TOKEN_USER']
 def confGitHubToken = env['CONF_GITHUB_TOKEN']
+def confGitHubTokenId = env['CONF_GITHUB_TOKEN_ID']
+
+// Login for private Docker registry
+def dockerLogin = env['CONF_DOCKER_LOGIN'] // TODO: Allow multiple
+def dockerPass = env['CONF_DOCKER_PASS']
 
 if (confGitHubTokenUser && confGitHubToken) {
   println "--> creating username & password credentials for ${confGitHubTokenUser}"
   def githubOrgCred =  new UsernamePasswordCredentialsImpl(
     CredentialsScope.GLOBAL,
-    env['CONF_GITHUB_TOKEN_ID'],
+    confGitHubTokenId,
     'GitHub organization token',
     confGitHubTokenUser,
     confGitHubToken
@@ -36,7 +41,7 @@ if (confGitHubTokenUser && confGitHubToken) {
   println "--> creating secret text credentials for ${confGitHubTokenUser}"
   def githubOrgSecretText = new StringCredentialsImpl(
     CredentialsScope.GLOBAL,
-    env['CONF_GITHUB_TOKEN_ID'] + '-text',
+    "${confGitHubTokenId}-text",
     'GitHub organization token as secret text',
     Secret.fromString(confGitHubToken)
   )
@@ -49,15 +54,11 @@ if (confGitHubTokenUser && confGitHubToken) {
   println 'DEBUG: No CONF_GITHUB_TOKEN_USER or CONF_GITHUB_TOKEN defined, skipping GitHub credentials'
 }
 
-// Login for private Docker registry
-def dockerLogin = env['CONF_DOCKER_LOGIN'] // TODO: Allow multiple
-def dockerPass = env['CONF_DOCKER_PASS']
-
 if (dockerLogin && dockerPass) {
   println "--> creating 'docker-login' credentials for ${dockerLogin}"
   def dockerLoginCred = new UsernamePasswordCredentialsImpl(
     CredentialsScope.GLOBAL,
-    'docker-login',
+    'docker-login', // TODO: Allow multiple
     'Docker registry login',
     dockerLogin,
     dockerPass
